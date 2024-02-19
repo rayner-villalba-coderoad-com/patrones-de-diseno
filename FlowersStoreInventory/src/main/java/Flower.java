@@ -1,5 +1,3 @@
-package com.upb.factory_method;
-
 public class Flower {
     private int id;
     private String name;

@@ -1,5 +1,3 @@
-package com.upb.factory_method;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -13,11 +11,14 @@ public class Main {
         FeedStockCounterCsv feedStockCounterCsv = new FeedStockCounterCsv();
         System.out.println(feedStockCounterCsv.totalStock(csvRecords));
 
-//        String JSON_PATH = "data/warehouse-stock.json";
-//        FileReaderInventory fileReaderInventoryJson  = new FileReaderInventory(JSON_PATH);
-//        String jsonRecords =  fileReaderInventoryJson.readFileContent();
-//
-//        System.out.println(jsonRecords);
+        String JSON_PATH = "data/warehouse-stock.json";
+        FileReaderInventory fileReaderInventoryJson  = new FileReaderInventory(JSON_PATH);
+        String jsonRecords =  fileReaderInventoryJson.readFileContent();
+
+        FeedStockCounterJson feedStockCounterJson = new FeedStockCounterJson();
+        System.out.println(feedStockCounterJson.totalStock(jsonRecords));
+
+        //System.out.println(jsonRecords);
     }
 
 }
