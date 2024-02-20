@@ -11,14 +11,14 @@ public class Main {
         System.out.println(csvRecords);
         // Step 2 Interpret or parse data
         FeedStockCounterCsv feedStockCounterCsv = new FeedStockCounterCsv();
-//        System.out.println(feedStockCounterCsv.totalStock(csvRecords));
-//
-//        String JSON_PATH = "data/warehouse-stock.json";
-//        FileReaderInventory fileReaderInventoryJson  = new FileReaderInventory(JSON_PATH);
-//        String jsonRecords =  fileReaderInventoryJson.readFileContent();
-//
-//        FeedStockCounterJson feedStockCounterJson = new FeedStockCounterJson();
-//        System.out.println(feedStockCounterJson.totalStock(jsonRecords));
+        System.out.println(feedStockCounterCsv.totalStock(csvRecords));
+
+       String JSON_PATH = "data/warehouse-stock.json";
+       FileReaderInventory fileReaderInventoryJson  = new FileReaderInventory(JSON_PATH);
+       String jsonRecords =  fileReaderInventoryJson.readFileContent();
+
+       FeedStockCounterJson feedStockCounterJson = new FeedStockCounterJson();
+       System.out.println(feedStockCounterJson.totalStock(jsonRecords));
 
         //System.out.println(jsonRecords);
     }
