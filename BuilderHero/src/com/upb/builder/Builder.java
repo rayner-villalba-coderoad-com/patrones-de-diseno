@@ -3,11 +3,13 @@ package com.upb.builder;
 public class Builder {
     public final Profession profession;
     public final String name;
-    public HairType hairType;
+    public HairType hairType = HairType.BALD;
     public HairColor hairColor;
     public Armor armor;
     public Weapon weapon;
 
+
+    //Step 2 Define constructor
     public Builder(Profession profession, String name) {
         if (profession == null || name == null) {
             throw new IllegalArgumentException("No podemos crear un nuevo personaje sin profesión y name");
@@ -16,8 +18,10 @@ public class Builder {
         this.name = name;
     }
 
+    //Step 3 Define methods that will change the state of each attribute
     public Builder withHairType(HairType hairType) {
         this.hairType = hairType;
+        //It should return the entire object
         return this;
     }
 
@@ -36,6 +40,7 @@ public class Builder {
         return this;
     }
 
+    //Step 4
     public Hero build() {
         return new Hero(this);
     }

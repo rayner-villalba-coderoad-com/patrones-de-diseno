@@ -1,6 +1,7 @@
 package com.upb.builder;
 
 public final class Hero {
+    //Step 1 Identify attributes
     private final Profession profession;
     private final String name;
     private final HairType hairType;
@@ -10,7 +11,12 @@ public final class Hero {
 
 
 
-//    public Hero(Profession profession, String name, HairType hairType, HairColor hairColor, Armor armor, Weapon weapon) {
+//    public Hero(Profession profession,
+//                String name,
+//                HairType hairType,
+//                HairColor hairColor,
+//                Armor armor,
+//                Weapon weapon) {
 //        this.profession = profession;
 //        this.name = name;
 //        this.hairType = hairType;
