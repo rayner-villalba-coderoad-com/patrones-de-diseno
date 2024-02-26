@@ -7,6 +7,15 @@ public class Main {
 
         double amount = 100.0;
 
+        Paypal paypal = new Paypal();
+        StripePaymentGateway stripe = new StripePaymentGateway();
+
+        PayPalAdapter paypalAdapter = new PayPalAdapter(paypal);
+        paypalAdapter.processPayment(amount);
+
+        StripeAdapter stripeAdapter = new StripeAdapter(stripe);
+        stripeAdapter.processPayment(amount);
+
 
     }
 }
