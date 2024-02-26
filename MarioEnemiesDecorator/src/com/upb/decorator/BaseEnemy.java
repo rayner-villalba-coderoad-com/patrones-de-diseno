@@ -4,11 +4,11 @@ public class BaseEnemy implements Enemy {
 
     @Override
     public String getDescription() {
-      return "Create enemy";
+      return "Create enemy UPB";
     }
 
     @Override
     public int takeDamage() {
-        return 10;
+        return 100;
     }
 }

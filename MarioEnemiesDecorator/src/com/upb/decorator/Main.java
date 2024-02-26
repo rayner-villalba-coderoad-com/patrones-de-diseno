@@ -9,6 +9,7 @@ public class Main {
         Enemy koopa = new BaseEnemy();
 
         System.out.println("Daño del koopa: " + koopa.takeDamage());
+        System.out.println("koopa description: " + koopa.getDescription());
 
         HelmetDecorator helmetKoopa = new HelmetDecorator(koopa);
 
