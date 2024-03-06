@@ -9,9 +9,7 @@ public class Application {
 
 
     public static void main(String[] args) {
-
         Console presentationObject = new Console();
         presentationObject.start();
-
     }
 }
