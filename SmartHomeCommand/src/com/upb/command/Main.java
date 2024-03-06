@@ -31,7 +31,7 @@ public class Main {
         remoteControl.setCommand(1, garageDoorOpenCommand, garageDoorCloseCommand);
         remoteControl.setCommand(2, stereoOnCommand, stereoOffCommand);
 
-        remoteControl.onButtonWasPressed(0);
+        remoteControl.onButtonWasPressed(2);
         remoteControl.offButtonWasPressed(2);
 
     }

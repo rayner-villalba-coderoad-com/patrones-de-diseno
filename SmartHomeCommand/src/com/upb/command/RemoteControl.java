@@ -1,5 +1,6 @@
 package com.upb.command;
 
+//Invoker
 public class RemoteControl {
     Command[] onCommands;
     Command[] offCommands;
