@@ -4,10 +4,9 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Application {
-    private static Connection connection;
+
 
     public static void main(String[] args) {
-        setupDatabase();
 
         int option;
         Scanner scanner = new Scanner(System.in);
@@ -94,58 +93,9 @@ public class Application {
 
     }
 
-    private static void setupDatabase() {
 
-        try {
-            //Parámetros de la base de datos en memoria.
-            String url = "jdbc:sqlite::memory:";
-            //Crear conexión a la base de datos
-            connection = DriverManager.getConnection(url);
 
-            System.out.println("Connection to SQLite has been established.");
 
-            // Crear tabla que guarda las propiedades.
-            try(Statement statement = connection.createStatement()) {
-
-                String createTableSQL = "CREATE TABLE Property (\n"
-                        + " PropertyId integer PRIMARY KEY,\n"
-                        + " Name text not null,\n"
-                        + " Type integer not null,\n"
-                        + " MaxGuests integer not null)";
-                statement.execute(createTableSQL);
-
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-
-            //Insertar datos de prueba
-            insertProperty(1, "Apartamento de 3 habitaciones en el sur de la ciudad", 1, 5);
-            insertProperty(2, "Habitación con cama doble", 2, 2);
-            insertProperty(3, "Sofá cama en apartamento bonito", 3, 1);
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-    private static void insertProperty(int propertyId, String name, int type, int maxGuests) {
-
-        final String insertSQL = "INSERT INTO Property(PropertyId, Name, Type, MaxGuests) VALUES(?, ?, ?, ?)";
-
-        try(PreparedStatement statement = connection.prepareStatement(insertSQL)) {
-
-            statement.setInt(1, propertyId);
-            statement.setString(2, name);
-            statement.setInt(3, type);
-            statement.setInt(4, maxGuests);
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
 
     private static void closeConnection(){
         try {
