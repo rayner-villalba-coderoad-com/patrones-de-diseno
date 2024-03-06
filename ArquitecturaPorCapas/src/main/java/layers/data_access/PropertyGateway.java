@@ -9,6 +9,17 @@ import java.util.List;
 //The unique task is data access
 public class PropertyGateway {
     private static Connection connection;
+    private static PropertyGateway instance;
+
+    public static PropertyGateway getInstance() {
+        if(instance == null) {
+            instance = new PropertyGateway();
+            instance.setupDatabase();
+        }
+        return instance;
+    }
+
+
 
     public List<Property> getAll() {
         List<Property> properties = new ArrayList<>();
@@ -38,7 +49,6 @@ public class PropertyGateway {
     }
 
     private void setupDatabase() {
-
         try {
             //Parámetros de la base de datos en memoria.
             String url = "jdbc:sqlite::memory:";
