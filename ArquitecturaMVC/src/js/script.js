@@ -1,2 +1,5 @@
+console.log('App UPB TODO LIST!!');
 
-console.log('App example');
+const model = new TodoModel();
+const view = new TodoView();
+const app = new TodoController(model, view);
