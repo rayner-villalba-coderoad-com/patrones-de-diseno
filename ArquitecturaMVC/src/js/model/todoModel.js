@@ -2,14 +2,21 @@ class TodoModel { //Se encargara del manejo de datos y logica de negocio
   constructor() {
     console.log('Todo Model');
 
-    this.todos = [
-      {id: 1, text: 'Desayunar', complete: false},
-      {id: 2, text: 'Ir al gimnasio', complete: false},
-    ];
+    // this.todos = [
+    //   {id: 1, text: 'Desayunar', complete: false},
+    //   {id: 2, text: 'Ir al gimnasio', complete: false},
+    // ];
+
+    this.todos = JSON.parse(localStorage.getItem('todos')) || [];
   }
 
   bindTodoListChanged(callback) {
     this.onTodoListChanged = callback;
+  }
+
+  _commit(todos) {
+    this.onTodoListChanged(this.todos);
+    localStorage.setItem('todos', JSON.stringify(todos));
   }
 
   addTodo(todoText) {
@@ -22,7 +29,7 @@ class TodoModel { //Se encargara del manejo de datos y logica de negocio
     this.todos.push(todo);
     console.log(this.todos);
 
-    this.onTodoListChanged(this.todos);
+    this._commit(this.todos);
   }
 
   editTodo(id, updatedText) {
@@ -42,7 +49,9 @@ class TodoModel { //Se encargara del manejo de datos y logica de negocio
   deleteTodo(id) {
     this.todos = this.todos.filter(function(todo) {
       return todo.id !== id;
-    })
+    });
+
+    this._commit(this.todos);
   }
 
   toggleTodo(id) {
