@@ -44,7 +44,11 @@ class TodoModel { //Se encargara del manejo de datos y logica de negocio
 
       return todo;
     });
+
+    this._commit(this.todos);
   }
+
+
 
   deleteTodo(id) {
     this.todos = this.todos.filter(function(todo) {
@@ -55,6 +59,7 @@ class TodoModel { //Se encargara del manejo de datos y logica de negocio
   }
 
   toggleTodo(id) {
+    console.log(id);
     this.todos = this.todos.map(function(todo) {
        if (todo.id === id) {
         todo = {
@@ -66,5 +71,7 @@ class TodoModel { //Se encargara del manejo de datos y logica de negocio
        
       return todo;
     });
+
+    this._commit(this.todos);
   }
 }

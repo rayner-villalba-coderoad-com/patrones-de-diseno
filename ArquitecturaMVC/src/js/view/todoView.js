@@ -29,6 +29,18 @@ class TodoView { //TODO lo que el usuario ve
 
     //Append the title
     this.app.append(this.title, this.form, this.todoList);
+
+
+    this._temporaryTodoText = '';
+    this._initLocalListeners();
+  }
+
+  _initLocalListeners() {
+    this.todoList.addEventListener('input', (event) => {
+      if (event.target.className === 'editable') {
+        this._temporaryTodoText = event.target.innerText;
+      }
+    })
   }
 
   //Create element with or without CSS class
@@ -119,7 +131,8 @@ class TodoView { //TODO lo que el usuario ve
   bindDeleteTodo(handler) {
     const that = this;
     this.todoList.addEventListener('click', function(event) {
-      event.preventDefault();
+      console.log(event);
+     // event.preventDefault();
 
       if (event.target.className === 'delete') {
         const id = parseInt(event.target.parentElement.id);
@@ -131,14 +144,26 @@ class TodoView { //TODO lo que el usuario ve
   }
 
   bindToggleTodo(handler) {
-    const that = this;
-    this.todoList.addEventListener('change', function(event) {
-      event.preventDefault();
+    this.todoList.addEventListener('change', (event) =>{
+      console.log(event);
 
       if (event.target.type === 'checkbox') {
         const id = parseInt(event.target.parentElement.id);
 
         handler(id);
+      }
+
+    });
+  }
+
+  bindEditTodo(handler) {
+    this.todoList.addEventListener('focusout', event => {
+      if (this._temporaryTodoText) {
+        const id = parseInt(event.target.parentElement.id);
+
+        handler(id, this._temporaryTodoText);
+
+        this._temporaryTodoText = '';
       }
 
     })
